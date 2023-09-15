@@ -1,0 +1,62 @@
+x1.
+x2.
+x3.
+x4.
+%&diff {sp(a1)-ep(a1)} <= -1 :- a1.
+%&diff {sp(a2)-ep(a2)} = -3 :- a2.
+%x1->x4
+chosen(x1 ,x4, d).
+chosen(x1 ,x4, s).
+chosen(x4 ,x1, f).
+
+
+
+
+
+
+
+% equals
+% X equals Y
+& diff { sp (X) -sp (Y) } <= 0 :- chosen (X ,Y , eq ).
+& diff { sp (Y) -sp (X) } <= 0 :- chosen (X ,Y , eq ).
+& diff { ep (X) -ep (Y) } <= 0 :- chosen (X ,Y , eq ).
+& diff { ep (Y) -ep (X) } <= 0 :- chosen (X ,Y , eq ).
+
+% during
+% X is durin Y
+& diff { sp (Y) -sp (X) } <= -1 :- chosen (X ,Y ,d).
+& diff { ep (X) -ep (Y) } <= -1 :- chosen (X ,Y ,d).
+
+%precedes
+% X precedes Y
+& diff { ep(X) - sp(Y) } <= -1 :- chosen(X,Y,p).
+% X is preceded by Y
+& diff { ep(X) - sp(Y) } <= -1 :- chosen(Y,X,pi).
+
+%meets
+% X meets Y
+& diff { ep(X) - sp(Y) } <= 0 :- chosen(X,Y,m).
+% X is met by Y
+& diff { ep(X) - sp(Y) } <= 0 :- chosen(Y,X,m).
+
+%overlaps
+% X overlaps Y
+& diff { ep(X) - sp(Y) } <= -1 :- chosen(X,Y,o).
+% X is overlapped by Y
+& diff { ep(X) - sp(Y) } <= -1 :- chosen(Y,X,oi).
+
+%starts
+% X starts Y
+& diff { sp(X) - sp(Y) } <= 0 :- chosen(X,Y,s).
+& diff { ep(X) - ep(Y) } <= -1 :- chosen(X,Y,s).
+% X is started by Y
+& diff { sp(X) - sp(Y) } <= 0 :- chosen(Y,X,si).
+& diff { ep(X) - ep(Y) } <= -1 :- chosen(Y,X,si).
+
+%finishes
+% X finishes Y
+&diff { ep(X) - ep(Y) } <= 0 :- chosen(X,Y,f).
+&diff { sp(X) - sp(Y) } <= -1 :- chosen(X,Y,f).
+% X is finished by Y
+&diff { ep(X) - ep(Y) } <= 0 :- chosen(Y,X,fi).
+&diff { sp(X) - sp(Y) } <= -1 :- chosen(Y,X,fi).
