@@ -61,3 +61,5 @@ relation(c,d,m).
 
 relates(a,d).
 relates(d,e).
+relation(e,f,di).
+relates(f,a).
