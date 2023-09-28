@@ -1,3 +1,7 @@
+%
+% based on https://whyjava.files.wordpress.com/2019/04/distributed-tracing.jpg
+%
+
 span(a, none, t).
 relation(a, b, di).
 relation(a, e, di).
@@ -56,10 +60,9 @@ span(e, a, t).
 % dl(sp(e),3) dl(ep(e),4)
 
 
-relation(b,e,m).
-relation(c,d,m).
 
 relates(a,d).
 relates(d,e).
-relation(e,f,di).
-relates(f,a).
+relation(b,e,m).
+relation(c,d,m).
+
